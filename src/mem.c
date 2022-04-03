@@ -176,7 +176,8 @@ addr_t alloc_mem(uint32_t size, struct pcb_t *proc) {
                 break;
             }
         }
-
+        printf("========================Allocated memory region========================\n");
+        dump();
     }
     pthread_mutex_unlock(&mem_lock);
     return ret_mem;
@@ -229,6 +230,8 @@ int free_mem(addr_t address, struct pcb_t *proc) {
                     p_index = _mem_stat[p_index].next;
                 } while (p_index != -1);
                 valid = 1;
+                printf("========================Free memory region========================\n");
+                dump();
             }
         }
     }
